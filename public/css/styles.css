@@ -1,0 +1,44 @@
+li {
+	list-style: none;
+	color: gray;
+}
+
+body {
+	color: white;
+	background-color: black;
+}
+
+h3 {
+	color: gray;
+}
+
+a {
+	color: gray;
+}
+
+form {
+	float: center;
+}
+
+.task-item {
+	margin:30px; 
+}
+
+.taskname {
+	margin-left:30px; 
+	font-size: 20px;
+}
+
+.remove {
+	display: inline-block;
+}
+
+
+.todos {
+	position: relative;
+	top: 50px;
+}
+
+.completed {
+	text-decoration:line-through;
+}
