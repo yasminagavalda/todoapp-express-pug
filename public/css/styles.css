@@ -1,6 +1,18 @@
-li {
+ul>li {
 	list-style: none;
+}
+
+ol>li {
+	font-size: 20px;
+	margin-top:20px;
+}
+
+li {
 	color: gray;
+}
+
+ul {
+	padding: 0;
 }
 
 body {
@@ -16,21 +28,68 @@ a {
 	color: gray;
 }
 
+h3 a {
+	color: #c6c6c6;
+}
+
+
+hr {
+	border-color: gray;
+}
+
+nav {
+	margin-top: 15px;
+}
+
 form {
-	float: center;
+	position: absolute;
+	left: 25%;
 }
 
-.task-item {
-	margin:30px; 
+.input-group {
+	display: flex;
 }
 
-.taskname {
-	margin-left:30px; 
+.nav-pills>li>a {
 	font-size: 20px;
 }
 
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
+
+.search {
+	display: flex;
+}
+
+.task-item {
+	margin-top: 50px;
+}
+
+.taskname {
+	position: absolute;
+	left: 25%;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.name {
+	position: absolute;
+	left: 28%;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.time{
+	position: absolute;
+	left: 25%;
+}
+
 .remove {
-	display: inline-block;
+	float: right;
+	margin-right: 100px;
 }
 
 
@@ -41,4 +100,9 @@ form {
 
 .completed {
 	text-decoration:line-through;
+}
+
+.notasks {
+	color: gray;
+	font-size: 20px;
 }

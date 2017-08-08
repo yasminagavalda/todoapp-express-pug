@@ -1,7 +1,8 @@
 .header.clearfix
   nav
     ul.nav.nav-pills.pull-left
+      li.active(role='presentation')
+        a(href='/') List tasks
       li(role='presentation')
-        a(href='/tasks') List tasks
-      li(role='presentation')
-        a(href='/tasks/completed') Completed
+        a(href='/completed') Completed
+hr

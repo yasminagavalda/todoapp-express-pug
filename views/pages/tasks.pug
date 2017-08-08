@@ -3,19 +3,31 @@ extends ../layout
 block content
   .container
     h1 TO-DO List
-    h3 Welcome to the Todo app by Yasmina Gavaldà. Please enjoy.
+    h3
+      | Welcome to the Todo app by 
+      a(href='https://github.com/yasminagavalda') Yasmina Gavaldà
+      | . Please enjoy.
     br
-    button.doneAll.btn.btn-success All done
-    form(action="tasks", method="POST")
-      .input-group
-        input.btn(name="task")
-        button.btn.btn-primary Add task
+    .search
+      button.doneAll.btn.btn-success All done
+      form(action="tasks", method="POST")
+        .input-group
+          input.btn(name="task")
+          button.btn.btn-primary Add task
     br
-    ul
+    ul.todoTasks
+      if todoTasks.length === 0
+        p.notasks No tasks....
       each task, i in todoTasks
-        li.task-item
-          button.done.btn.btn-success.pull-left(data-id=task.id) Done
-          .info-task
-            span.taskname= task.name
-            span= task.date
-            button.remove.btn.btn-danger.pull-right(data-id=task.id) Remove task
+        if task.done === false
+          li.task-item
+            button.done.btn.btn-success.pull-left(data-id=task.id) Done
+            .info-task
+              span.taskname= i+1 + '.'
+              span.name= task.name
+              button.remove.btn.btn-danger.pull-right(data-id=task.id) Delete task
+              br
+              span.time.hidden-xs= task.dateCreated
+          
+
+

@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
+const moment = require('moment')
 const app = express()
 
 app.set('view engine', 'pug')
@@ -14,24 +15,23 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 let todoTasks = []
-let completedTasks = []
 let counter = 0
 
-app.get('/tasks', (req,res) => {
+app.get('/', (req,res) => {
   res.render('pages/tasks', { todoTasks })
 })
 
-app.get('/tasks/completed', (req,res) => {
-  res.render('pages/completed', { completedTasks })
+app.get('/completed', (req,res) => {
+  res.render('pages/completed', { todoTasks })
 })
 
 app.post('/tasks', (req,res) => {
-  let todo = {id: counter++, name: req.body.task, done: false, date: new Date().toString()}
+  let todo = {id: counter++, name: req.body.task, done: false, dateCreated: 'Created at ' + moment().format('MMMM Do YYYY, h:mm:ss a')}
   todoTasks.push(todo)
-  res.redirect('/tasks')
+  res.redirect('/')
 })
 
-app.delete('/tasks/:id', (req,res) => {
+app.delete('/task/:id', (req,res) => {
   todoTasks.forEach(function(item, index) {
   	if (item.id === parseInt(req.params.id)) {
   		todoTasks.splice(index, 1)
@@ -41,23 +41,22 @@ app.delete('/tasks/:id', (req,res) => {
   res.render('pages/tasks', { todoTasks })
 })
 
-app.put('/tasks/completed/:id', (req, res) => {
+app.put('/completed/:id', (req, res) => {
   todoTasks.forEach(function(item, index) {
   	if (item.id === parseInt(req.params.id)) {
-  		completedTasks.push(item)
-  		todoTasks.splice(index, 1)
+  		item.done = true
+      item.dateCompleted = 'Completed at ' + moment().format('MMMM Do YYYY, h:mm:ss a')
   		return
   	}
   })
   res.render('pages/tasks', { todoTasks })
 })
 
-app.put('/tasks/done-all', (req, res) => {
-  console.log(todoTasks, completedTasks)
+app.put('/done-all', (req, res) => {
   todoTasks.forEach(item => {
-    completedTasks.push(item)
+    item.done = true
+    item.dateCompleted = 'Completed at ' + moment().format('MMMM Do YYYY, h:mm:ss a')
   })
-  todoTasks = []
   res.render('pages/tasks', { todoTasks })
 })
 app.listen(3001)

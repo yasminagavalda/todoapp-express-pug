@@ -1,9 +1,13 @@
 extends ../layout
 
 block content
+  .container
     h1 Completed
-    ul
-      each completedTask, i in completedTasks
-        li.completed
-          = completedTask.name
-          = completedTask.date
+    ol
+      each completedTask, i in todoTasks
+        if completedTask.done === true
+          li.completed
+            = completedTask.name
+            |  (
+            = completedTask.dateCompleted
+            |)

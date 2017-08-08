@@ -6,7 +6,7 @@ $('.remove').on('click', function(e) {
   var id = $(this).attr('data-id')
 
   $.ajax({
-    url: '/tasks/' + id,
+    url: '/task/' + id,
     method: 'DELETE'
   })
   .then( data => {
@@ -20,7 +20,7 @@ $('.done').on('click', function(e) {
   var id = $(this).attr('data-id')
 
   $.ajax({
-    url: '/tasks/completed/' + id,
+    url: '/completed/' + id,
     method: 'PUT'
   })
   .then( data => {
@@ -33,7 +33,7 @@ $('.done').on('click', function(e) {
 $('.doneAll').on('click', function(e) {
 
   $.ajax({
-    url: '/tasks/done-all',
+    url: '/done-all',
     method: 'PUT'
   })
   .then( data => {
@@ -41,3 +41,19 @@ $('.doneAll').on('click', function(e) {
   } )
 
 })
+
+$(document).ready(function(){
+    var cambio = false;
+    $('.nav li a').each(function(index) {
+        if(this.href.trim() == window.location){
+            $(this).parent().addClass("active");
+            cambio = true;
+        } else {
+            $(this).parent().removeClass("active");
+        }
+    });
+    if(!cambio){
+        $('.nav li:first').addClass("active");
+    }
+});
+
