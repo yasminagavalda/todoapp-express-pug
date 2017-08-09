@@ -12,13 +12,13 @@ block content
       button.doneAll.btn.btn-success All done
       form(action="tasks", method="POST")
         .input-group
-          input.btn(name="task")
-          button.btn.btn-primary Add task
+          input.btn(name="task" placeholder="Add a new task")
+          button.btn.btn-info Add task
     br
     ul.todoTasks
-      if todoTasks.length === 0
+      if tasks.length === 0
         p.notasks No tasks....
-      each task, i in todoTasks
+      each task, i in tasks
         if task.done === false
           li.task-item
             button.done.btn.btn-success.pull-left(data-id=task.id) Done

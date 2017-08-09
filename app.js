@@ -15,10 +15,17 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 let todoTasks = []
+let tasks = []
 let counter = 0
 
 app.get('/', (req,res) => {
-  res.render('pages/tasks', { todoTasks })
+  tasks = []
+  todoTasks.forEach(function(item){
+    if (item.done === false) {
+      tasks.push(item)
+    }
+  })
+  res.render('pages/tasks', { tasks })
 })
 
 app.get('/completed', (req,res) => {
@@ -38,7 +45,7 @@ app.delete('/task/:id', (req,res) => {
   		return
   	}
   })
-  res.render('pages/tasks', { todoTasks })
+  res.render('pages/tasks', { tasks })
 })
 
 app.put('/completed/:id', (req, res) => {
@@ -49,7 +56,7 @@ app.put('/completed/:id', (req, res) => {
   		return
   	}
   })
-  res.render('pages/tasks', { todoTasks })
+  res.render('pages/tasks', { tasks })
 })
 
 app.put('/done-all', (req, res) => {
@@ -57,6 +64,6 @@ app.put('/done-all', (req, res) => {
     item.done = true
     item.dateCompleted = 'Completed at ' + moment().format('MMMM Do YYYY, h:mm:ss a')
   })
-  res.render('pages/tasks', { todoTasks })
+  res.render('pages/tasks', { tasks })
 })
 app.listen(3001)
