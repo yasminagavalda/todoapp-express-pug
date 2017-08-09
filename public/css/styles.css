@@ -55,9 +55,12 @@ form {
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-	background-color: black;
+	background-color: #3F4448;
 	color: white;
-	font-weight: bold;
+}
+
+.nav-pills>li.active>a:hover {
+	background-color: #3F4448;
 }
 
 .search {
@@ -76,15 +79,37 @@ form {
 }
 
 .name {
+	outline-width: 0;
 	position: absolute;
 	left: 28%;
 	font-size: 15px;
 	font-weight: bold;
+	color: #c6c6c6;
+	background-color: black;
+	border-radius: 3px;
+	border-color: black;
+	border: 0;
+}
+
+.name:focus {
+	outline-width: 0;
+	position: absolute;
+	left: 28%;
+	font-size: 15px;
+	font-weight: bold;
+	color: #c6c6c6;
+	background-color: #3F4448;
+	border-radius: 3px;
+	border-color: black;
+	border: 0;
+	width:150px;
+	text-indent: 10px;
 }
 
 .time{
 	position: absolute;
 	left: 25%;
+	margin-top: 10px;
 }
 
 .remove {
@@ -105,4 +130,15 @@ form {
 .notasks {
 	color: gray;
 	font-size: 20px;
+}
+
+.btn-info {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.addtasks, .addtasks:focus {
+	outline: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
 }

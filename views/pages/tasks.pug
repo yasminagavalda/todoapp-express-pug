@@ -5,14 +5,14 @@ block content
     h1 TO-DO List
     h3
       | Welcome to the Todo app by 
-      a(href='https://github.com/yasminagavalda') Yasmina Gavaldà
+      a(href='https://github.com/yasminagavalda' target='_blank') Yasmina Gavaldà
       | . Please enjoy.
     br
     .search
       button.doneAll.btn.btn-success All done
       form(action="tasks", method="POST")
         .input-group
-          input.btn(name="task" placeholder="Add a new task")
+          input.addtasks.btn(name="task" placeholder="Add a new task" autofocus)
           button.btn.btn-info Add task
     br
     ul.todoTasks
@@ -24,7 +24,7 @@ block content
             button.done.btn.btn-success.pull-left(data-id=task.id) Done
             .info-task
               span.taskname= i+1 + '.'
-              span.name= task.name
+              input.name(value=task.name)
               button.remove.btn.btn-danger.pull-right(data-id=task.id) Delete task
               br
               span.time.hidden-xs= task.dateCreated

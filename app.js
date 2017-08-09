@@ -66,4 +66,19 @@ app.put('/done-all', (req, res) => {
   })
   res.render('pages/tasks', { tasks })
 })
+
+
+app.put('/edited/:id/:taskname', (req, res) => {
+  let id = req.params.id
+  let taskname = req.params.taskname
+  todoTasks.forEach(function(item) {
+    if (item.id === parseInt(id)) {
+      item.name = taskname
+      return
+    }
+  })
+  res.render('pages/tasks', { tasks })
+})
+
+
 app.listen(3001)

@@ -3,6 +3,11 @@ extends ../layout
 block content
   .container
     h1 Completed
+    h3
+      | Welcome to the Todo app by 
+      a(href='https://github.com/yasminagavalda') Yasmina Gavaldà
+      | . Please enjoy.
+    br
     ol
       each completedTask, i in todoTasks
         if completedTask.done === true

@@ -1,6 +1,6 @@
 console.log('Javascript ready to go...')
 
-$('input').focus()
+
 
 $('.remove').on('click', function(e) {
   var id = $(this).attr('data-id')
@@ -57,3 +57,23 @@ $(document).ready(function(){
     }
 });
 
+
+
+
+$('.name').on( 'keydown', function(event) {
+    if(event.which == 13) {
+      var taskname = $(this).val()
+      var id = $(this).parent().siblings('button').attr('data-id')
+
+      $.ajax({
+        url: '/edited/' + id + '/' + taskname,
+        method: 'PUT'
+      })
+      .then( data => {
+        console.log(data);
+        window.location.reload()
+      })
+    }
+
+        
+});
